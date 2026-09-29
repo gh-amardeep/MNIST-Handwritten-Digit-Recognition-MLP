@@ -1,17 +1,20 @@
-🧠 MNIST Handwritten Digit Recognition using MLP
+# 🧠 MNIST Handwritten Digit Recognition using MLP
 
 <p align="center">
-  <b>Machine Learning • Neural Networks • MLP • Image Classification • TensorFlow/Keras</b>
+<b>Machine Learning • Neural Networks • MLP • Image Classification • TensorFlow/Keras</b>
 </p>
 
-A machine-learning laboratory project for handwritten digit classification using a Multi-Layer Perceptron (MLP) trained on the MNIST dataset. The project covers data exploration, preprocessing, baseline model development, controlled hyperparameter experiments, final-model evaluation, confusion-matrix analysis, and misclassification analysis.
+A machine-learning laboratory project for handwritten digit classification using a **Multi-Layer Perceptron (MLP)** trained on the **MNIST dataset**. The project covers data exploration, preprocessing, baseline model development, controlled hyperparameter experiments, final-model evaluation, error analysis, and prediction on handwritten digit images.
 
-🚀 Project Overview
+---
 
-The objective is to build and evaluate a neural-network model capable of recognizing handwritten digits from 0 to 9.
+## 🚀 Project Overview
 
-Processing Pipeline
+The objective is to build and evaluate a neural-network model capable of recognizing handwritten digits from **0 to 9**.
 
+The project follows a complete machine-learning workflow:
+
+```text
 MNIST Dataset
       ↓
 Data Exploration
@@ -31,39 +34,59 @@ Test Evaluation
 Confusion Matrix
       ↓
 Misclassification Analysis
+      ↓
+Custom Handwritten Digit Prediction
+```
 
-✨ Key Features
+---
 
-🔢 Handwritten digit classification for 10 classes (0–9)
+## ✨ Key Features
 
-🖼️ Visualization of MNIST samples
+- 🔢 Handwritten digit classification for 10 classes (0–9)
+- 🖼️ Visualization of MNIST samples
+- 📊 Class-distribution analysis
+- 🧠 Multi-Layer Perceptron neural network
+- ⚙️ Architecture experiments
+- 📦 Batch-size experiments
+- 📈 Learning-rate experiments
+- ⏱️ Training-time comparison
+- 📉 Training and validation loss analysis
+- 📈 Training and validation accuracy analysis
+- 🧩 Confusion-matrix evaluation
+- ❌ Misclassified-image analysis
+- 💾 Model saving and reloading
+- ✍️ Prediction on handwritten digit images
 
-📊 Class-distribution analysis
+---
 
-🧠 Multi-Layer Perceptron neural network
+# 🖼️ Dataset
 
-⚙️ Architecture, batch-size, learning-rate, and epoch experiments
+The project uses the **MNIST handwritten digit dataset**, containing grayscale images of handwritten digits from 0 to 9.
 
-📈 Training and validation accuracy/loss analysis
+Each image is represented as a grayscale pixel array and processed before being supplied to the MLP.
 
-⏱️ Training-time comparison
+Example classes:
 
-🧩 Confusion-matrix evaluation
+```text
+0  1  2  3  4
+5  6  7  8  9
+```
 
-❌ Misclassified-image analysis
+### Sample Visualization
 
-💾 Model saving and reloading
+```markdown
+![MNIST Samples](output-images/mnist-sample-distribution.png)
+```
 
-🖼️ Dataset Exploration
+---
 
-The project visualizes sample MNIST digits and examines the distribution of the ten digit classes.
+# 🔍 Data Exploration
 
-<p align="center">
-  <img src="output-images/mnist-sample-distribution.png" width="850">
-</p>
+The project examines the distribution of the training samples across the ten digit classes.
 
-Training-set Class Distribution
+The recorded class counts are:
 
+```text
 Digit 0 : 5923 examples
 Digit 1 : 6742 examples
 Digit 2 : 5958 examples
@@ -74,11 +97,41 @@ Digit 6 : 5918 examples
 Digit 7 : 6265 examples
 Digit 8 : 5851 examples
 Digit 9 : 5949 examples
+```
 
-🧠 MLP Architecture
+This provides an initial understanding of the dataset before model training.
 
-The baseline model uses two hidden layers:
+---
 
+# ⚙️ Preprocessing
+
+Before training, the image data is prepared for the neural network.
+
+The preprocessing pipeline includes:
+
+```text
+Raw MNIST Images
+       ↓
+Pixel Processing
+       ↓
+Normalization
+       ↓
+Input Preparation
+       ↓
+MLP
+```
+
+The image pixels are converted into a suitable numerical representation for the neural network.
+
+---
+
+# 🧠 MLP Architecture
+
+The project uses a **Multi-Layer Perceptron (MLP)** for digit classification.
+
+The baseline architecture uses two hidden layers:
+
+```text
 Input Layer
      ↓
 Dense Layer: 128 neurons
@@ -86,294 +139,173 @@ Dense Layer: 128 neurons
 Dense Layer: 64 neurons
      ↓
 Output Layer: 10 classes
+```
 
-The output layer represents the ten possible digit classes:
+The output layer corresponds to the ten possible digit labels:
 
+```text
 0  1  2  3  4  5  6  7  8  9
+```
 
-🧪 Hyperparameter Experiments
+---
 
-Multiple controlled experiments were performed by varying:
+# 🧪 Hyperparameter Experiments
 
-Network architecture
+Rather than relying on a single configuration, the project evaluates multiple training configurations.
 
-Batch size
+The experiments vary:
 
-Learning rate
+### 1. Network Architecture
 
-Number of epochs
-
-Architecture
-
+```text
 Baseline       → (128, 64)
 Arch_smaller   → (64)
 Arch_wider     → (256, 128)
+```
 
-Batch Size
+### 2. Batch Size
 
+```text
 32
 64
 128
+```
 
-Learning Rate
+### 3. Learning Rate
 
+```text
 0.001
 0.01
 0.0005
+```
 
-Epochs
+### 4. Number of Epochs
 
+```text
 5
 10
 15
 20
+```
 
-Experiment Results
+This allows the effect of different hyperparameters to be studied systematically.
 
-Experiment
+---
 
-Architecture
+# 📊 Experiment Results
 
-Batch Size
+The experiment table recorded the following configurations:
 
-Learning Rate
+| Experiment | Architecture | Batch | Learning Rate | Epochs | Training Accuracy | Validation Accuracy |
+|---|---|---:|---:|---:|---:|---:|
+| Baseline | (128, 64) | 32 | 0.001 | 15 | 0.995241 | 0.977000 |
+| Arch_smaller | (64) | 32 | 0.001 | 15 | 0.996926 | 0.970333 |
+| Arch_wider | (256, 128) | 32 | 0.001 | 15 | 0.995741 | 0.978500 |
+| Batch_64 | (128, 64) | 64 | 0.001 | 15 | 0.996556 | 0.976000 |
+| Batch_128 | (128, 64) | 128 | 0.001 | 15 | 0.996685 | 0.975667 |
+| LR_high_0.01 | (128, 64) | 32 | 0.01 | 15 | 0.977537 | 0.960333 |
+| LR_low_0.0005 | (128, 64) | 32 | 0.0005 | 15 | 0.997333 | 0.976667 |
+| Epochs_5 | (128, 64) | 32 | 0.001 | 5 | 0.987667 | 0.970000 |
+| Epochs_10 | (128, 64) | 32 | 0.001 | 10 | 0.994000 | 0.974667 |
+| Epochs_20 | (128, 64) | 32 | 0.001 | 20 | 0.996759 | 0.975167 |
 
-Epochs
+The corresponding experiment table and training-time comparison can be included in the repository.
 
-Training Accuracy
+```markdown
+![Hyperparameter Experiments](output-images/hyperparameter-results.png)
 
-Validation Accuracy
+![Training Time Comparison](output-images/training-time-comparison.png)
+```
 
-Baseline
+---
 
-(128, 64)
+# 📈 Final Model Training
 
-32
+The final model training history shows the evolution of training and validation accuracy and loss across epochs.
 
-0.001
+```markdown
+![Final Training Curves](output-images/final-training-curves.png)
+```
 
-15
+The final training curves show that training accuracy continues to increase while the validation accuracy improves more gradually. The training and validation losses also show the difference between fitting the training data and generalization to unseen validation data.
 
-0.995241
+---
 
-0.977000
+# 🎯 Final Model Performance
 
-Arch_smaller
+The final model results recorded in the project are:
 
-(64)
+```text
+Training Accuracy   : 99.49%
+Validation Accuracy : 97.52%
+Test Accuracy       : 97.58%
+Test Loss           : 0.1311
+MSE                 : 0.004116
+```
 
-32
+The final model therefore demonstrates high classification accuracy on the MNIST test set.
 
-0.001
+---
 
-15
+# 🧩 Confusion Matrix
 
-0.996926
+A confusion matrix is used to examine the classification behavior for each individual digit class.
 
-0.970333
+```markdown
+![Confusion Matrix](output-images/confusion-matrix.png)
+```
 
-Arch_wider
+The diagonal entries represent correctly classified samples, while off-diagonal entries show where one digit was classified as another.
 
-(256, 128)
+This provides more detailed information than overall accuracy alone.
 
-32
+---
 
-0.001
+# ❌ Misclassification Analysis
 
-15
+The final model produced:
 
-0.995741
+```text
+242 misclassified images out of 10,000 test images
+```
 
-0.978500
+The project visualizes examples of these incorrect predictions.
 
-Batch_64
+```markdown
+![Misclassified Images](output-images/misclassified-images.png)
+```
 
-(128, 64)
+These examples help identify visually similar handwritten digits that can be difficult for the classifier to distinguish.
 
-64
+---
 
-0.001
+# ✍️ Custom Handwritten Digit Prediction
 
-15
+The model is also tested using handwritten digit images beyond the standard result plots.
 
-0.996556
+The prediction stage demonstrates how the trained classifier can be used on an input image and return a predicted digit.
 
-0.976000
+```markdown
+![Custom Digit Prediction](output-images/custom-digit-prediction.png)
+```
 
-Batch_128
+This provides a simple demonstration of using the trained model for inference.
 
-(128, 64)
+---
 
-128
-
-0.001
-
-15
-
-0.996685
-
-0.975667
-
-LR_high_0.01
-
-(128, 64)
-
-32
-
-0.01
-
-15
-
-0.977537
-
-0.960333
-
-LR_low_0.0005
-
-(128, 64)
-
-32
-
-0.0005
-
-15
-
-0.997333
-
-0.976667
-
-Epochs_5
-
-(128, 64)
-
-32
-
-0.001
-
-5
-
-0.987667
-
-0.970000
-
-Epochs_10
-
-(128, 64)
-
-32
-
-0.001
-
-10
-
-0.994000
-
-0.974667
-
-Epochs_20
-
-(128, 64)
-
-32
-
-0.001
-
-20
-
-0.996759
-
-0.975167
-
-<p align="center">
-  <img src="output-images/hyperparameter-results.png" width="900">
-</p>
-
-⏱️ Training Accuracy vs. Training Time
-
-The experiments were also compared in terms of training accuracy and computational time.
-
-<p align="center">
-  <img src="output-images/training-time-comparison.png" width="800">
-</p>
-
-📈 Final Model Training
-
-The training curves show the evolution of training and validation accuracy and loss over the training epochs.
-
-<p align="center">
-  <img src="output-images/final-training-curves.png" width="900">
-</p>
-
-🎯 Final Model Performance
-
-The recorded final-model results are:
-
-Metric
-
-Result
-
-Training Accuracy
-
-99.49%
-
-Validation Accuracy
-
-97.52%
-
-Test Accuracy
-
-97.58%
-
-Test Loss
-
-0.1311
-
-MSE
-
-0.004116
-
-The final model achieved 97.58% accuracy on the MNIST test set.
-
-🧩 Confusion Matrix
-
-The confusion matrix provides class-wise information about correct predictions and the digit classes that are most frequently confused.
-
-<p align="center">
-  <img src="output-images/confusion-matrix.png" width="650">
-</p>
-
-The diagonal entries represent correctly classified samples, while off-diagonal entries represent classification errors.
-
-❌ Misclassification Analysis
-
-The final model misclassified:
-
-242 out of 10,000 test images
-
-Examples of incorrect predictions are shown below.
-
-<p align="center">
-  <img src="output-images/misclassified-images.png" width="900">
-</p>
-
-These examples provide insight into visually similar handwritten digits that can be difficult for the classifier to distinguish.
-
-✅ Correctly Classified Examples
-
-Examples of correctly classified test images are also included for visual verification.
-
-<p align="center">
-  <img src="output-images/correctly-classified-images.png" width="900">
-</p>
-
-💾 Model Saving and Reloading
+# 💾 Model Saving and Reloading
 
 The trained model is saved in Keras format:
 
+```text
 mnist_mlp_final.keras
+```
 
-The workflow is:
+The saved model can subsequently be loaded and evaluated again.
 
+This demonstrates a complete workflow:
+
+```text
 Train
   ↓
 Save Model
@@ -383,47 +315,76 @@ Reload Model
 Evaluate
   ↓
 Predict
+```
 
-🛠️ Technologies Used
+---
 
-Programming Language
+# 📊 Evaluation Metrics
 
-Python
+The project evaluates the model using multiple measures:
 
-Machine Learning
+### Accuracy
 
-TensorFlow
+Measures the fraction of correctly classified samples.
 
-Keras
+```text
+Accuracy = Correct Predictions / Total Predictions
+```
 
-Numerical & Data Processing
+### Loss
 
-NumPy
+The training process tracks classification loss over the epochs.
 
-Pandas
+### Mean Squared Error
 
-Visualization
+The project also calculates MSE as an additional numerical evaluation measure.
 
-Matplotlib
+### Confusion Matrix
 
-Seaborn
+Provides class-wise information about correct and incorrect predictions.
 
-Evaluation
+---
 
-Scikit-learn
+# 🛠️ Technologies Used
 
-Environment
+### Programming Language
 
-Jupyter Notebook
+- Python
 
-Google Colab compatible workflow
+### Machine Learning
 
-📁 Project Structure
+- TensorFlow
+- Keras
 
+### Numerical and Data Processing
+
+- NumPy
+- Pandas
+
+### Visualization
+
+- Matplotlib
+- Seaborn
+
+### Evaluation
+
+- Scikit-learn
+
+### Development Environment
+
+- Jupyter Notebook / Google Colab compatible workflow
+
+---
+
+# 📁 Project Structure
+
+```text
 MNIST-Handwritten-Digit-Recognition-MLP/
 │
 ├── README.md
+│
 ├── MNIST_MLP.ipynb
+│
 ├── mnist_mlp_final.keras
 │
 └── output-images/
@@ -433,34 +394,44 @@ MNIST-Handwritten-Digit-Recognition-MLP/
     ├── final-training-curves.png
     ├── confusion-matrix.png
     ├── misclassified-images.png
-    └── correctly-classified-images.png
+    └── custom-digit-prediction.png
+```
 
-▶️ How to Run
+---
 
-1. Clone the repository
+# ▶️ How to Run
 
+### 1. Clone the repository
+
+```bash
 git clone <YOUR-REPOSITORY-URL>
 cd MNIST-Handwritten-Digit-Recognition-MLP
+```
 
-2. Install dependencies
+### 2. Install the required packages
 
+```bash
 pip install tensorflow numpy pandas matplotlib seaborn scikit-learn jupyter
+```
 
-3. Open the notebook
+### 3. Open the notebook
 
 Open:
 
+```text
 MNIST_MLP.ipynb
+```
 
 using Jupyter Notebook or Google Colab.
 
-4. Run the notebook
+### 4. Run the notebook sequentially
 
-Execute the cells sequentially:
+The notebook performs:
 
+```text
 Dataset Loading
       ↓
-Data Exploration
+Exploration
       ↓
 Preprocessing
       ↓
@@ -473,49 +444,50 @@ Final Model Training
 Evaluation
       ↓
 Error Analysis
+      ↓
+Prediction
+```
 
-🎓 Learning Outcomes
+---
+
+# 🎓 Learning Outcomes
 
 This project provides practical experience with:
 
-Machine-learning workflow design
+- Machine-learning workflow design
+- Neural-network fundamentals
+- Multi-Layer Perceptrons
+- Image classification
+- Data preprocessing
+- Hyperparameter tuning
+- Training/validation analysis
+- Model evaluation
+- Confusion matrices
+- Error analysis
+- Model persistence
+- Neural-network inference
 
-Multi-Layer Perceptrons
+---
 
-Neural-network training
+# 🔬 Possible Future Improvements
 
-Image classification
+Potential extensions include:
 
-Data preprocessing
+- Convolutional Neural Network (CNN) comparison
+- Data augmentation
+- Dropout and regularization experiments
+- Early stopping
+- Learning-rate scheduling
+- Per-class precision and recall
+- ROC-style class analysis
+- Interactive digit-drawing interface
+- Comparison with classical ML classifiers
 
-Hyperparameter experimentation
+---
 
-Training/validation analysis
+# ⭐ Project Highlights
 
-Confusion-matrix interpretation
-
-Misclassification analysis
-
-Model persistence
-
-Neural-network inference
-
-🔬 Possible Future Improvements
-
-🧠 Compare the MLP with a Convolutional Neural Network (CNN)
-
-🧩 Add dropout and regularization experiments
-
-⏹️ Add early stopping
-
-📈 Add learning-rate scheduling
-
-📊 Perform per-class precision and recall analysis
-
-✍️ Build an interactive handwritten-digit drawing interface
-
-⭐ Project Highlights
-
+```text
 🔢 MNIST Digit Classification
 🧠 Multi-Layer Perceptron
 ⚙️ Hyperparameter Experiments
@@ -524,21 +496,29 @@ Neural-network inference
 🧩 Confusion Matrix
 ❌ Misclassification Analysis
 💾 Model Saving & Reloading
+✍️ Handwritten Digit Prediction
 🐍 Python
 ⚡ TensorFlow / Keras
+```
 
-👨‍💻 Author
+---
 
-AmarDeep Dwivedi
+## 👨‍💻 Author
 
-M.Tech
-Electrical Engineering — CSPML
+**AmarDeep Dwivedi**
+
+M.Tech  
+Electrical Engineering — CSPML  
 IIT Dharwad
 
-📜 License
+---
+
+## 📜 License
 
 This project is intended for educational and research purposes.
 
+---
+
 <p align="center">
-  <b>🔢 From Pixels → Neural Network → Classification → Analysis</b>
+<b>🔢 From Pixels → Neural Network → Classification → Analysis</b>
 </p>
