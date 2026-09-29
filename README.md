@@ -1,12 +1,16 @@
 🧠 MNIST Handwritten Digit Recognition using MLP
 
-Machine Learning • Neural Networks • MLP • Image Classification • TensorFlow/Keras
+<p align="center">
+  <b>Machine Learning • Neural Networks • MLP • Image Classification • TensorFlow/Keras</b>
+</p>
 
 A machine-learning laboratory project for handwritten digit classification using a Multi-Layer Perceptron (MLP) trained on the MNIST dataset. The project covers data exploration, preprocessing, baseline model development, controlled hyperparameter experiments, final-model evaluation, confusion-matrix analysis, and misclassification analysis.
 
 🚀 Project Overview
 
 The objective is to build and evaluate a neural-network model capable of recognizing handwritten digits from 0 to 9.
+
+Processing Pipeline
 
 MNIST Dataset
       ↓
@@ -54,22 +58,22 @@ Misclassification Analysis
 
 The project visualizes sample MNIST digits and examines the distribution of the ten digit classes.
 
+<p align="center">
+  <img src="output-images/mnist-sample-distribution.png" width="850">
+</p>
 
+Training-set Class Distribution
 
-Figure: Sample MNIST images and training-set class distribution.
-
-Recorded training-set class counts:
-
-Digit 0 : 5923
-Digit 1 : 6742
-Digit 2 : 5958
-Digit 3 : 6131
-Digit 4 : 5842
-Digit 5 : 5421
-Digit 6 : 5918
-Digit 7 : 6265
-Digit 8 : 5851
-Digit 9 : 5949
+Digit 0 : 5923 examples
+Digit 1 : 6742 examples
+Digit 2 : 5958 examples
+Digit 3 : 6131 examples
+Digit 4 : 5842 examples
+Digit 5 : 5421 examples
+Digit 6 : 5918 examples
+Digit 7 : 6265 examples
+Digit 8 : 5851 examples
+Digit 9 : 5949 examples
 
 🧠 MLP Architecture
 
@@ -83,83 +87,292 @@ Dense Layer: 64 neurons
      ↓
 Output Layer: 10 classes
 
+The output layer represents the ten possible digit classes:
+
+0  1  2  3  4  5  6  7  8  9
+
 🧪 Hyperparameter Experiments
 
-Multiple controlled experiments were performed by varying network architecture, batch size, learning rate, and number of training epochs.
+Multiple controlled experiments were performed by varying:
 
-Architecture:
+Network architecture
+
+Batch size
+
+Learning rate
+
+Number of epochs
+
+Architecture
+
 Baseline       → (128, 64)
 Arch_smaller   → (64)
 Arch_wider     → (256, 128)
 
-Batch Size:
-32, 64, 128
+Batch Size
 
-Learning Rate:
-0.001, 0.01, 0.0005
+32
+64
+128
 
-Epochs:
-5, 10, 15, 20
+Learning Rate
 
+0.001
+0.01
+0.0005
 
+Epochs
 
-Figure: Hyperparameter experiment results.
+5
+10
+15
+20
+
+Experiment Results
+
+Experiment
+
+Architecture
+
+Batch Size
+
+Learning Rate
+
+Epochs
+
+Training Accuracy
+
+Validation Accuracy
+
+Baseline
+
+(128, 64)
+
+32
+
+0.001
+
+15
+
+0.995241
+
+0.977000
+
+Arch_smaller
+
+(64)
+
+32
+
+0.001
+
+15
+
+0.996926
+
+0.970333
+
+Arch_wider
+
+(256, 128)
+
+32
+
+0.001
+
+15
+
+0.995741
+
+0.978500
+
+Batch_64
+
+(128, 64)
+
+64
+
+0.001
+
+15
+
+0.996556
+
+0.976000
+
+Batch_128
+
+(128, 64)
+
+128
+
+0.001
+
+15
+
+0.996685
+
+0.975667
+
+LR_high_0.01
+
+(128, 64)
+
+32
+
+0.01
+
+15
+
+0.977537
+
+0.960333
+
+LR_low_0.0005
+
+(128, 64)
+
+32
+
+0.0005
+
+15
+
+0.997333
+
+0.976667
+
+Epochs_5
+
+(128, 64)
+
+32
+
+0.001
+
+5
+
+0.987667
+
+0.970000
+
+Epochs_10
+
+(128, 64)
+
+32
+
+0.001
+
+10
+
+0.994000
+
+0.974667
+
+Epochs_20
+
+(128, 64)
+
+32
+
+0.001
+
+20
+
+0.996759
+
+0.975167
+
+<p align="center">
+  <img src="output-images/hyperparameter-results.png" width="900">
+</p>
 
 ⏱️ Training Accuracy vs. Training Time
 
 The experiments were also compared in terms of training accuracy and computational time.
 
-
-
-Figure: Training accuracy versus training time across experiments.
+<p align="center">
+  <img src="output-images/training-time-comparison.png" width="800">
+</p>
 
 📈 Final Model Training
 
-The training curves show the evolution of training and validation accuracy and loss over epochs.
+The training curves show the evolution of training and validation accuracy and loss over the training epochs.
 
-
-
-Figure: Final model accuracy and loss over epochs.
+<p align="center">
+  <img src="output-images/final-training-curves.png" width="900">
+</p>
 
 🎯 Final Model Performance
 
-Training Accuracy   : 99.49%
-Validation Accuracy : 97.52%
-Test Accuracy       : 97.58%
-Test Loss           : 0.1311
-MSE                 : 0.004116
+The recorded final-model results are:
 
-The final model achieved 97.58% accuracy on the 10,000-image MNIST test set.
+Metric
+
+Result
+
+Training Accuracy
+
+99.49%
+
+Validation Accuracy
+
+97.52%
+
+Test Accuracy
+
+97.58%
+
+Test Loss
+
+0.1311
+
+MSE
+
+0.004116
+
+The final model achieved 97.58% accuracy on the MNIST test set.
 
 🧩 Confusion Matrix
 
 The confusion matrix provides class-wise information about correct predictions and the digit classes that are most frequently confused.
 
+<p align="center">
+  <img src="output-images/confusion-matrix.png" width="650">
+</p>
 
-
-Figure: Confusion matrix of the final model on the MNIST test set.
+The diagonal entries represent correctly classified samples, while off-diagonal entries represent classification errors.
 
 ❌ Misclassification Analysis
 
-The final model misclassified 242 out of 10,000 test images. The following examples illustrate some of the incorrect predictions.
+The final model misclassified:
 
+242 out of 10,000 test images
 
+Examples of incorrect predictions are shown below.
 
-Figure: Examples of misclassified MNIST test images.
+<p align="center">
+  <img src="output-images/misclassified-images.png" width="900">
+</p>
+
+These examples provide insight into visually similar handwritten digits that can be difficult for the classifier to distinguish.
 
 ✅ Correctly Classified Examples
 
-Examples of correctly classified test images are also shown to provide a visual check of successful predictions.
+Examples of correctly classified test images are also included for visual verification.
 
-
-
-Figure: Examples of correctly classified MNIST test images.
+<p align="center">
+  <img src="output-images/correctly-classified-images.png" width="900">
+</p>
 
 💾 Model Saving and Reloading
 
-The trained model is saved in Keras format and can be reloaded for subsequent evaluation or inference.
+The trained model is saved in Keras format:
 
 mnist_mlp_final.keras
+
+The workflow is:
 
 Train
   ↓
@@ -173,23 +386,39 @@ Predict
 
 🛠️ Technologies Used
 
+Programming Language
+
 Python
 
-TensorFlow / Keras
+Machine Learning
+
+TensorFlow
+
+Keras
+
+Numerical & Data Processing
 
 NumPy
 
 Pandas
 
+Visualization
+
 Matplotlib
 
 Seaborn
 
+Evaluation
+
 Scikit-learn
 
-Jupyter Notebook / Google Colab
+Environment
 
-📁 Recommended GitHub Structure
+Jupyter Notebook
+
+Google Colab compatible workflow
+
+📁 Project Structure
 
 MNIST-Handwritten-Digit-Recognition-MLP/
 │
@@ -208,21 +437,52 @@ MNIST-Handwritten-Digit-Recognition-MLP/
 
 ▶️ How to Run
 
-1. Clone the repository.
+1. Clone the repository
 
-2. Install TensorFlow, NumPy, Pandas, Matplotlib, Seaborn, and Scikit-learn.
+git clone <YOUR-REPOSITORY-URL>
+cd MNIST-Handwritten-Digit-Recognition-MLP
 
-3. Open the MNIST notebook in Jupyter Notebook or Google Colab.
+2. Install dependencies
 
-4. Run the cells sequentially from dataset loading through evaluation.
+pip install tensorflow numpy pandas matplotlib seaborn scikit-learn jupyter
 
-5. Inspect the training curves, confusion matrix, and error analysis outputs.
+3. Open the notebook
+
+Open:
+
+MNIST_MLP.ipynb
+
+using Jupyter Notebook or Google Colab.
+
+4. Run the notebook
+
+Execute the cells sequentially:
+
+Dataset Loading
+      ↓
+Data Exploration
+      ↓
+Preprocessing
+      ↓
+Baseline Training
+      ↓
+Hyperparameter Experiments
+      ↓
+Final Model Training
+      ↓
+Evaluation
+      ↓
+Error Analysis
 
 🎓 Learning Outcomes
 
+This project provides practical experience with:
+
 Machine-learning workflow design
 
-Multi-Layer Perceptron neural networks
+Multi-Layer Perceptrons
+
+Neural-network training
 
 Image classification
 
@@ -236,19 +496,23 @@ Confusion-matrix interpretation
 
 Misclassification analysis
 
-Model persistence and inference
+Model persistence
+
+Neural-network inference
 
 🔬 Possible Future Improvements
 
-Compare the MLP with a Convolutional Neural Network (CNN)
+🧠 Compare the MLP with a Convolutional Neural Network (CNN)
 
-Experiment with dropout and regularization
+🧩 Add dropout and regularization experiments
 
-Add early stopping and learning-rate scheduling
+⏹️ Add early stopping
 
-Perform per-class precision and recall analysis
+📈 Add learning-rate scheduling
 
-Build an interactive handwritten-digit drawing interface
+📊 Perform per-class precision and recall analysis
+
+✍️ Build an interactive handwritten-digit drawing interface
 
 ⭐ Project Highlights
 
@@ -266,10 +530,15 @@ Build an interactive handwritten-digit drawing interface
 👨‍💻 Author
 
 AmarDeep Dwivedi
-M.Tech Research
+
+M.Tech
 Electrical Engineering — CSPML
 IIT Dharwad
 
 📜 License
 
 This project is intended for educational and research purposes.
+
+<p align="center">
+  <b>🔢 From Pixels → Neural Network → Classification → Analysis</b>
+</p>
